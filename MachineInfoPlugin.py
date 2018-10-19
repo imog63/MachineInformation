@@ -20,12 +20,12 @@ import time
 
 from apama.eplplugin import EPLAction, EPLPluginBase
 
-class systemPlugin(EPLPluginBase):
+class MachineInfoPlugin(EPLPluginBase):
     start=0
     def __init__(self,init):
-        super(systemPlugin,self).__init__(init)
-        self.getLogger().info("Python systemPlugin initialised with config: %s" % self.getConfig())
-        systemPlugin.start=time.time()
+        super(MachineInfoPlugin,self).__init__(init)
+        self.getLogger().info("Python MachineInfoPlugin initialised with config: %s" % self.getConfig())
+        MachineInfoPlugin.start=time.time()
     @EPLAction("action< > returns float")
     def bytesperMB(self):
         #1024*1024=1048576
@@ -33,7 +33,7 @@ class systemPlugin(EPLPluginBase):
     @EPLAction("action< > returns integer")
     def get_start_time(self):
         self.getLogger().info("Executing get_start_time")
-        return systemPlugin.start    
+        return MachineInfoPlugin.start    
     @EPLAction("action<float>")
     def pause(self, seconds):
         self.getLogger().info("Executing pause")
@@ -98,5 +98,5 @@ class systemPlugin(EPLPluginBase):
     @EPLAction("action< > returns integer")
     def uptime(self):
         self.getLogger().info("Executing uptime")
-        retval=time.time() - systemPlugin.start    
+        retval=time.time() - MachineInfoPlugin.start    
         return retval  

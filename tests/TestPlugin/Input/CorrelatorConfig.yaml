@@ -16,5 +16,5 @@
 
 eplPlugins:
   pythonSystem:
-    pythonFile: ${APAMA_WORK}/lib/System.py
-    class: systemPlugin    
+    pythonFile: ${APAMA_WORK}/lib/MachineInfoPlugin.py
+    class: MachineInfoPlugin
