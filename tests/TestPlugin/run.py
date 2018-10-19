@@ -18,12 +18,12 @@ from pysys.constants import *
 from apama.basetest import ApamaBaseTest
 from apama.correlator import CorrelatorHelper
 import re
+import os
 
 class PySysTest(ApamaBaseTest):
 	def execute(self):
 		correlator = CorrelatorHelper(self, name='testcorrelator')
-		correlator.start(logfile='testcorrelator.log', config=PROJECT.APAMA_WORK+"/MachineInformation-master/CorrelatorConfig.yaml", arguments=['-DCOMMAND_LINE=commandValue'])
-		correlator.injectEPL(filenames=['pythonRun.mon'], filedir=PROJECT.APAMA_WORK+"/eventdefinitions")
+		correlator.start(logfile='testcorrelator.log', config=os.path.join(self.input, 'CorrelatorConfig.yaml'))
 		correlator.injectEPL(filenames=['test.mon'])
 		correlator.flush() 					
 		

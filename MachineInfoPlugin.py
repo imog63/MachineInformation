@@ -14,20 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
-'''
-Created on 18 Sep 2018
-
-@author: IAMO
-'''
-#import sys
 import os
-# python -m pip install -U psutil
 import psutil
 import time
-#import platform
+
 from apama.eplplugin import EPLAction, EPLPluginBase
+
 class systemPlugin(EPLPluginBase):
     start=0
     def __init__(self,init):
